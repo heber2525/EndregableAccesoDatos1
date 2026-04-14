@@ -11,14 +11,14 @@ import java.util.Vector;
 public class VentasDAO {
 
     public void instertarVenta(Venta venta){
-        String sql = "INSERT INTO Ventas(fecha, total, id_empleado)";
+        String sql = "INSERT INTO Ventas(fecha, total, id_empleado) VALUES (?, ?, ?)";
 
         try {
             Connection conn = DataBaseConnection.conectar();
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setString(1, venta.getFecha());
-            ps.setInt(2, venta.getTotal());
+            ps.setDouble(2, venta.getTotal());
             ps.setInt(3, venta.getId_empleado());
 
             ps.executeUpdate();
@@ -41,9 +41,9 @@ public class VentasDAO {
 
             while (rs.next()){
                 Venta venta = new Venta(
-                        rs.getInt("id"),
+                        rs.getInt("id_venta"),
                         rs.getString("fecha"),
-                        rs.getInt("total"),
+                        rs.getDouble("total"),
                         rs.getInt("id_empleado")
                 );
                 ventas.add(venta);
@@ -54,29 +54,29 @@ public class VentasDAO {
         return ventas;
     }
 
-    public void actualizarVenta(int id, String fecha, int total, int id_empleado){
-        String sql = "UPDATE ventas SET fecha = ?, total = ?, id_empleado = ? WHERE id = ?";
+    public void actualizarVenta(int id, String fecha, double total, int id_empleado){
+        String sql = "UPDATE ventas SET fecha = ?, total = ?, id_empleado = ? WHERE id_venta = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setString(1, fecha);
-            ps.setInt(2, total);
+            ps.setDouble(2, total);
             ps.setInt(3, id_empleado);
             ps.setInt(4, id);
 
             ps.executeUpdate();
             ps.close();
 
-            System.out.println("Proveedor actualizado");
+            System.out.println("Venta actualizada");
 
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
     public void eliminarVenta(int id){
-        String sql = "DELETE FROM  ventas WHERE id =?";
+        String sql = "DELETE FROM ventas WHERE id_venta =?";
 
         try {
             Connection conn = DataBaseConnection.conectar();

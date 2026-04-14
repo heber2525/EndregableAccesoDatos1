@@ -39,7 +39,7 @@ public class EmpleadoDAO {
 
             while (rs.next()){
                 Empleado empleado = new Empleado(
-                        rs.getInt("id"),
+                        rs.getInt("id_empleado"),
                         rs.getString("nombre"),
                         rs.getString("puesto")
                 );
@@ -51,7 +51,7 @@ public class EmpleadoDAO {
         return empleados;
     }
     public void actualizarEmpleado(int id, String nombre, String puesto ){
-        String sql = "UPDATE empleados SET nombre = ?, puesto = ? WHERE id = ?";
+        String sql = "UPDATE empleados SET nombre = ?, puesto = ? WHERE id_empleado = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -71,7 +71,7 @@ public class EmpleadoDAO {
         }
     }
     public void eliminarEmpleado(int id){
-        String sql = "DELETE FROM empleados WHERE id = ?";
+        String sql = "DELETE FROM empleados WHERE id_empleado = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();

@@ -10,7 +10,7 @@ import java.util.List;
 public class ProveedorDAO {
 
     public void instertarProveedor(Proveedor proveedor){
-        String sql = "INSTER INTO proveedores(nombre, contacto, suministra) VALUES(?,?,?)";
+        String sql = "INSERT INTO proveedores(nombre_proveedor, contacto, suministra) VALUES(?,?,?)";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -41,8 +41,8 @@ public class ProveedorDAO {
 
             while (rs.next()){
                 Proveedor proveedor = new Proveedor(
-                        rs.getInt("id"),
-                        rs.getString("nombre"),
+                        rs.getInt("id_proveedor"),
+                        rs.getString("nombre_proveedor"),
                         rs.getString("contacto"),
                         rs.getString("suministra")
                 );
@@ -56,7 +56,7 @@ public class ProveedorDAO {
 
     }
     public void actualizarProveedor(int id, String nombre, String contacto, String suministtra){
-        String sql = "UPDATE provedores SET nombre = ?, contacto = ?, suministra = ? WHERE id = ?";
+        String sql = "UPDATE proveedores SET nombre_proveedor = ?, contacto = ?, suministra = ? WHERE id_proveedor = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -77,7 +77,7 @@ public class ProveedorDAO {
         }
     }
     public void eliminarProveedor(int id){
-        String sql = "DELETE FROM proveedores WHERE id = ?";
+        String sql = "DELETE FROM proveedores WHERE id_proveedor = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();

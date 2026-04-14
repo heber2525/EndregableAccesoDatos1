@@ -46,10 +46,6 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", puesto='" + puesto + '\'' +
-                '}';
+        return "ID: " + id + " - Nombre: " + nombre + " - Puesto: " + puesto;
     }
 }

@@ -3,23 +3,26 @@ package org.example.model;
 public class Producto {
     private int id;
     private String nombre;
+    private double precio;
     private int stock;
     private int id_categoria;
     private int id_proveedor;
 
     public Producto(){};
 
-    public Producto(int id, String nombre, int stock, int id_categoria, int id_proveedor) {
+    public Producto(int id, String nombre, double precio, int stock, int id_categoria, int id_proveedor) {
         this.id =id;
         this.nombre = nombre;
+        this.precio = precio;
         this.stock = stock;
         this.id_categoria = id_categoria;
         this.id_proveedor = id_proveedor;
 
     }
-    public Producto(String nombre, int stock, int id_categoria, int id_proveedor) {
+    public Producto(String nombre, double precio,  int stock, int id_categoria, int id_proveedor) {
 
         this.nombre = nombre;
+        this.precio = precio;
         this.stock = stock;
         this.id_categoria = id_categoria;
         this.id_proveedor = id_proveedor;
@@ -40,6 +43,14 @@ public class Producto {
 
     public void setNombre(String producto) {
         this.nombre = producto;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
     public int getStock() {
@@ -69,12 +80,6 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" +
-                "id=" + id +
-                ", producto='" + nombre + '\'' +
-                ", stock=" + stock +
-                ", id_categoria=" + id_categoria +
-                ", id_proveedor=" + id_proveedor +
-                '}';
+        return "ID: " + id + " - Producto: " + nombre + " - Precio: " + precio + " - Stock: " + stock + " - Cat: " + id_categoria + " - Prov: " + id_proveedor;
     }
 }

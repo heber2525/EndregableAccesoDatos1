@@ -3,21 +3,23 @@ package org.example.model;
 public class Venta {
     private int id;
     private String fecha;
-    private int total;
+    private double total;
     private int id_empleado;
 
     public Venta(){};
 
-    public Venta(int id, String fecha, int id_empleado, int total) {
+    public Venta(int id, String fecha, double total, int id_empleado) {
         this.id =id;
         this.fecha = fecha;
-        this.id_empleado = id_empleado;
         this.total = total;
+        this.id_empleado = id_empleado;
+
     }
-    public Venta( String fecha, int id_empleado, int total) {
+    public Venta( String fecha, double total, int id_empleado) {
         this.fecha = fecha;
-        this.id_empleado = id_empleado;
         this.total = total;
+        this.id_empleado = id_empleado;
+
     }
 
     public int getId() {
@@ -36,11 +38,11 @@ public class Venta {
         this.fecha = fecha;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
@@ -54,11 +56,6 @@ public class Venta {
 
     @Override
     public String toString() {
-        return "Venta{" +
-                "id=" + id +
-                ", fecha='" + fecha + '\'' +
-                ", total=" + total +
-                ", id_empleado=" + id_empleado +
-                '}';
+        return "ID: " + id + " - Fecha: " + fecha + " - Total: " + total + "€ - Emp: " + id_empleado;
     }
 }

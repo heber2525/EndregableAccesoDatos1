@@ -37,8 +37,8 @@ public class CategoriaDAO {
 
             while (rs.next()){
              Categoria categoria = new Categoria(
-                     rs.getInt("id"),
-                     rs.getString("nombre")
+                     rs.getInt("id_categoria"),
+                     rs.getString("nombre_categoria")
              );
              categorias.add(categoria);
 
@@ -50,7 +50,7 @@ public class CategoriaDAO {
     }
 
     public void actualizarCategoria(int id, String nombre){
-        String sql = "UPDATE categorias SET nombre = ? WHERE id = ?";
+        String sql = "UPDATE categorias SET nombre_categoria = ? WHERE id_categoria = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -71,7 +71,7 @@ public class CategoriaDAO {
 
     }
     public void eliminarCategoria(int id ){
-        String sql = "DELETE FROM categorias WHERE id = ?";
+        String sql = "DELETE FROM categorias WHERE id_categoria = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();

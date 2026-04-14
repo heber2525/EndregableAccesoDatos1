@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.dao.ProveedorDAO;
+import org.example.model.Producto;
 import org.example.model.Proveedor;
 
 import java.util.List;
@@ -36,7 +37,13 @@ public class ProveedoresService {
                     proveedorDAO.instertarProveedor(new Proveedor(nombre, contacto, suministra));
                     break;
                 case 3:
-                    System.out.println("ID del proveedor a actualizar:");
+                    List <Proveedor> provedorActualizar = proveedorDAO.consultarProveedores();
+                    if(provedorActualizar.isEmpty()){
+                        System.out.println("No hay ningun proveedor disponible");
+                        return;
+                    }
+                    System.out.println("Este es el listado de proveedores escoja un ID");
+                    provedorActualizar.forEach(System.out::println);
                     int id = sc.nextInt();
                     sc.nextLine();
                     System.out.println("Ingresa nombre");
@@ -48,10 +55,18 @@ public class ProveedoresService {
                     proveedorDAO.actualizarProveedor(id, nombre, contacto, suministra);
                     break;
                 case 4:
-                    System.out.println("ID del proveedor a eliminar");
+                    List <Proveedor> proveedorEliminar = proveedorDAO.consultarProveedores();
+                    if(proveedorEliminar.isEmpty()){
+                        System.out.println("No hay ningun proveedor");
+                    }
+                    System.out.println("Escoja el ID del proveedor a eliminar");
+                    proveedorEliminar.forEach(System.out::println);
                     int idEliminar = sc.nextInt();
                     sc.nextLine();
                     proveedorDAO.eliminarProveedor(idEliminar);
+                    break;
+                default:
+                    System.out.println("Opción no válida, por favor intenta de nuevo.");
                     break;
             }
         }while (opcion != 0);

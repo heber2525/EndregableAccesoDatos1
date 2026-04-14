@@ -33,7 +33,13 @@ public class CategoriaService {
                     categoriaDao.insertarCategoria(new Categoria(nombre));
                     break;
                 case 3:
-                    System.out.println("ID de la categoria a actualizar");
+                    List <Categoria> categoriaActualizar = categoriaDao.consultarCategorias();
+                    if(categoriaActualizar.isEmpty()){
+                        System.out.println("No hay ninguna categoria");
+                        return;
+                    }
+                    System.out.println("Estas son las categorias, escoja el ID para actualizar");
+                    categoriaActualizar.forEach(System.out::println);
                     int id = sc.nextInt();
                     sc.nextLine();
                     System.out.println("Ingrese el nuevo nombre");
@@ -41,10 +47,19 @@ public class CategoriaService {
                     categoriaDao.actualizarCategoria(id, nombre);
                     break;
                 case 4:
-                    System.out.println("ID de la categoria a eliminar");
+                    List <Categoria> categoriaEliminar = categoriaDao.consultarCategorias();
+                    if(categoriaEliminar.isEmpty()){
+                        System.out.println("No hay ninguna categoria");
+                        return;
+                    }
+                    System.out.println("Estas son las categorias, escoja el ID para eliminar");
+                    categoriaEliminar.forEach(System.out::println);
                     int idEliminar = sc.nextInt();
                     sc.nextLine();
                     categoriaDao.eliminarCategoria(idEliminar);
+                    break;
+                default:
+                    System.out.println("Opción no válida, por favor intenta de nuevo.");
                     break;
             }
 

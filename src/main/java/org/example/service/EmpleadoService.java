@@ -47,6 +47,9 @@ public class EmpleadoService {
                     sc.nextLine();
                     empleadoDao.eliminarEmpleado(idEliminar);
                     break;
+                default:
+                    System.out.println("Opción no válida, por favor intenta de nuevo.");
+                    break;
             }
         } while (opcion != 0);
     }
