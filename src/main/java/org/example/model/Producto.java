@@ -17,6 +17,14 @@ public class Producto {
         this.id_proveedor = id_proveedor;
 
     }
+    public Producto(String nombre, int stock, int id_categoria, int id_proveedor) {
+
+        this.nombre = nombre;
+        this.stock = stock;
+        this.id_categoria = id_categoria;
+        this.id_proveedor = id_proveedor;
+
+    }
 
     public int getId() {
         return id;

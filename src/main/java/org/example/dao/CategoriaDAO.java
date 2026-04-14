@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CategoriaDAO {
     public void insertarCategoria(Categoria categoria){
-        String sql = "INSERT INTO Categorias(nombre_categoria) VALUES(?)";
+        String sql = "INSERT INTO categorias(nombre_categoria) VALUES(?)";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -28,7 +28,7 @@ public class CategoriaDAO {
     }
     public List<Categoria> consultarCategorias(){
         List<Categoria> categorias = new ArrayList<>();
-        String sql = "SELECT * FROM Categorias";
+        String sql = "SELECT * FROM categorias";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -50,7 +50,7 @@ public class CategoriaDAO {
     }
 
     public void actualizarCategoria(int id, String nombre){
-        String sql = "UPDATE Categorias SET nombre = ? WHERE id = ?";
+        String sql = "UPDATE categorias SET nombre = ? WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -71,7 +71,7 @@ public class CategoriaDAO {
 
     }
     public void eliminarCategoria(int id ){
-        String sql = "DELETE FROM Categoria WHERE id = ?";
+        String sql = "DELETE FROM categorias WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();

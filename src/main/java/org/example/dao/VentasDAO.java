@@ -55,7 +55,7 @@ public class VentasDAO {
     }
 
     public void actualizarVenta(int id, String fecha, int total, int id_empleado){
-        String sql = "UPDATE Ventas SET fecha = ?, total = ?, id_empleado = ? WHERE id = ?";
+        String sql = "UPDATE ventas SET fecha = ?, total = ?, id_empleado = ? WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -76,7 +76,7 @@ public class VentasDAO {
         }
     }
     public void eliminarVenta(int id){
-        String sql = "DELETE FROM  Ventas WHERE id =?";
+        String sql = "DELETE FROM  ventas WHERE id =?";
 
         try {
             Connection conn = DataBaseConnection.conectar();

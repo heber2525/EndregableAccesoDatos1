@@ -10,7 +10,7 @@ import java.util.List;
 public class ProveedorDAO {
 
     public void instertarProveedor(Proveedor proveedor){
-        String sql = "INSTER INTO Proveedores(nombre, contacto, suministra) VALUES(?,?,?)";
+        String sql = "INSTER INTO proveedores(nombre, contacto, suministra) VALUES(?,?,?)";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -32,7 +32,7 @@ public class ProveedorDAO {
 
     public List<Proveedor> consultarProveedores(){
         List<Proveedor> proveedores = new ArrayList<>();
-        String sql = "SELECT * FROM Proveedores";
+        String sql = "SELECT * FROM proveedores";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -56,7 +56,7 @@ public class ProveedorDAO {
 
     }
     public void actualizarProveedor(int id, String nombre, String contacto, String suministtra){
-        String sql = "UPDATE Provedores SET nombre = ?, contacto = ?, suministra = ? WHERE id = ?";
+        String sql = "UPDATE provedores SET nombre = ?, contacto = ?, suministra = ? WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -77,7 +77,7 @@ public class ProveedorDAO {
         }
     }
     public void eliminarProveedor(int id){
-        String sql = "DELETE FROM Proveedores WHERE id = ?";
+        String sql = "DELETE FROM proveedores WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -87,7 +87,7 @@ public class ProveedorDAO {
             ps.executeUpdate();
             ps.close();
 
-            System.out.println("Proveedir eliminado!");
+            System.out.println("Proveedor eliminado!");
 
         }catch (SQLException e){
             throw new RuntimeException(e);

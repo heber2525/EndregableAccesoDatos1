@@ -10,7 +10,7 @@ import java.util.List;
 public class EmpleadoDAO {
 
     public void insertarEmpleado(Empleado empleado){
-        String sql = "INSERT INTO Empleados(nombre, puesto) VALUES (?,?)";
+        String sql = "INSERT INTO empleados(nombre, puesto) VALUES (?,?)";
         try {
             Connection conn = DataBaseConnection.conectar();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -30,7 +30,7 @@ public class EmpleadoDAO {
 
     public List<Empleado> consultarEmpleados(){
         List<Empleado> empleados = new ArrayList<>();
-        String sql = "SELECT * FROM Empleados";
+        String sql = "SELECT * FROM empleados";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -51,7 +51,7 @@ public class EmpleadoDAO {
         return empleados;
     }
     public void actualizarEmpleado(int id, String nombre, String puesto ){
-        String sql = "UPDATE Empleados SET nombre = ?, puesto = ? WHERE id = ?";
+        String sql = "UPDATE empleados SET nombre = ?, puesto = ? WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -71,7 +71,7 @@ public class EmpleadoDAO {
         }
     }
     public void eliminarEmpleado(int id){
-        String sql = "DELETE FROM Empleados WHERE id = ?";
+        String sql = "DELETE FROM empleados WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();

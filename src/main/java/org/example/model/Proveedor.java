@@ -15,6 +15,12 @@ public class Proveedor {
         this.suministra = suministra;
     }
 
+    public Proveedor(String nombre, String conctacto, String suministra) {
+        this.nombre = nombre;
+        this.contacto = conctacto;
+        this.suministra = suministra;
+    }
+
     public int getId() {
         return id;
     }

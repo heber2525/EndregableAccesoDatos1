@@ -1,7 +1,6 @@
 package org.example.dao;
 
 import org.example.database.DataBaseConnection;
-import org.example.model.Empleado;
 import org.example.model.Producto;
 
 import java.sql.*;
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class ProductoDAO {
     public void insertarProducto(Producto producto){
-        String sql = "INSERT INTO Productos(nombre, stock, id_categoria, id_proveedor) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO productos(nombre, stock, id_categoria, id_proveedor) VALUES (?,?,?,?)";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -30,9 +29,9 @@ public class ProductoDAO {
             throw new RuntimeException(e);
         }
     }
-    public List<Producto> consultarProducto(){
+    public List<Producto> consultarProductos(){
         List<Producto> productos = new ArrayList<>();
-        String sql = "SELECT * FROM Productos";
+        String sql = "SELECT * FROM productos";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -44,9 +43,10 @@ public class ProductoDAO {
                         rs.getInt("id"),
                         rs.getString("nombre"),
                         rs.getInt("stock"),
-                        rs.getInt(" id_categoria"),
-                        rs.getInt(" id_proveedor")
+                        rs.getInt("id_categoria"),
+                        rs.getInt("id_proveedor")
                 );
+                productos.add(producto);
             }
 
         }catch (SQLException e){
@@ -56,7 +56,7 @@ public class ProductoDAO {
 
     }
     public void actualizarProducto(int id, String nombre, int stock, int id_categoria, int id_proveedor){
-        String sql = "UPDATE Productos SET nombre = ?, stock = ?, id_categoria = ?, id_proveedor = ? WHERE id = ?";
+        String sql = "UPDATE productos SET nombre = ?, stock = ?, id_categoria = ?, id_proveedor = ? WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();
@@ -77,7 +77,7 @@ public class ProductoDAO {
         }
     }
     public void eliminarProducto(int id){
-        String sql = "DELETE FROM Producto WHERE id = ?";
+        String sql = "DELETE FROM productos WHERE id = ?";
 
         try {
             Connection conn = DataBaseConnection.conectar();

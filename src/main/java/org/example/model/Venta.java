@@ -14,6 +14,11 @@ public class Venta {
         this.id_empleado = id_empleado;
         this.total = total;
     }
+    public Venta( String fecha, int id_empleado, int total) {
+        this.fecha = fecha;
+        this.id_empleado = id_empleado;
+        this.total = total;
+    }
 
     public int getId() {
         return id;
