@@ -5,8 +5,11 @@ public class Venta {
     private String fecha;
     private double total;
     private int id_empleado;
+    private String nombreEmpleado;
+
 
     public Venta(){};
+
 
     public Venta(int id, String fecha, double total, int id_empleado) {
         this.id =id;
@@ -54,8 +57,20 @@ public class Venta {
         this.id_empleado = id_empleado;
     }
 
+    public Venta(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+    }
+
+    public String getNombreEmpleado() {
+        return nombreEmpleado;
+    }
+
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+    }
+
     @Override
     public String toString() {
-        return "ID: " + id + " - Fecha: " + fecha + " - Total: " + total + "€ - Emp: " + id_empleado;
+        return "ID: " + id + " - Fecha: " + fecha + " - Total: " + total + "€ - Emp: " + id_empleado + "Nombre empleado: " + nombreEmpleado;
     }
 }

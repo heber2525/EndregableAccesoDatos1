@@ -10,7 +10,7 @@ import java.util.Vector;
 
 public class VentasDAO {
 
-    public void instertarVenta(Venta venta){
+    public void insertarVenta(Venta venta){
         String sql = "INSERT INTO Ventas(fecha, total, id_empleado) VALUES (?, ?, ?)";
 
         try {
@@ -91,6 +91,34 @@ public class VentasDAO {
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
+
+    }
+    public List <Venta> consultarVentasEmpleados(){
+        List<Venta> rankingVentas = new ArrayList<>();
+        String sql = "SELECT e.nombre, SUM(v.total) AS total_ventas FROM ventas v" +
+                " JOIN empleados e ON v.id_empleado = e.id_empleado" +
+                " GROUP BY e.nombre " +
+                " ORDER BY total_ventas DESC";
+
+        try {
+            Connection conn = DataBaseConnection.conectar();
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()){
+                Venta venta = new Venta();
+                String nombre = rs.getString("nombre");
+                double total = rs.getDouble("total_ventas");
+
+                venta.setNombreEmpleado(nombre);
+                venta.setTotal(total);
+
+                rankingVentas.add(venta);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return rankingVentas;
 
     }
 }

@@ -1,0 +1,24 @@
+Proyecto de Acceso a Datos - Gestión de Cafetería
+He creado esta aplicación para gestionar de forma completa una cafetería. El programa funciona por consola y se conecta a una base de datos PostgreSQL.
+
+Estructura del código:
+Para organizar el proyecto, he separado el código en varios paquetes:
+
+main: Donde tengo el menú principal que va redirigiendo al usuario según lo que quiera hacer.
+
+service: Recibe lo que elige el usuario en el menú y llama a los métodos de la base de datos. También se encarga de mostrar los resultados por pantalla.
+
+dao: Es la parte donde está toda la lógica de SQL (inserts, selects, etc) y donde hablo directamente con la base de datos.
+
+model: Tengo una clase para cada tabla (Venta, Empleado, Producto...) con sus getters, setters y constructores.
+
+database: Aquí tengo la clase de la conexión con el driver de JDBC.
+
+Sobre la base de datos:
+En el repositorio he dejado el archivo database.sql. Para sacarlo, he ido tabla por tabla en pgAdmin usando la opción de Create Script porque la pestaña general no me cargaba bien. He ordenado las tablas para que no den errores de claves foráneas al ejecutarlas.
+
+También he subido una captura del gráfico que hice en draw.io para que se vea cómo se relacionan todas las tablas.
+
+Lo que más me ha costado:
+Sin duda lo más difícil ha sido el tema del JOIN para el ranking de ventas. he tenido que usar la IA para que me ayudara con la consulta SQL, sobre todo para agrupar los totales por cada empleado y que salieran ordenados de mayor a menor. Al final he tenido que añadir un campo extra en el modelo de Venta para poder guardar el nombre del empleado que viene del JOIN y que no saliera solo el ID.
+

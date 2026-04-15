@@ -20,6 +20,7 @@ public class VentasService {
             System.out.println("2. Insertar Ventas");
             System.out.println("3. Actualizar Ventas");
             System.out.println("4. Eliminar Ventas");
+            System.out.println("5. Ranking de ventas");
             System.out.println("0. Volver al Menú Principal");
             opcion = sc.nextInt();
             sc.nextLine();
@@ -44,7 +45,7 @@ public class VentasService {
                     empleados.forEach(System.out::println);
                     int idEmpleado = sc.nextInt();
                     sc.nextLine();
-                    ventasDao.instertarVenta(new Venta(fecha, total, idEmpleado));
+                    ventasDao.insertarVenta(new Venta(fecha, total, idEmpleado));
                     break;
                 case 3:
                     List <Venta> ventaActualizar = ventasDao.consultarVentas();
@@ -83,6 +84,17 @@ public class VentasService {
                     int idEliminar = sc.nextInt();
                     sc.nextLine();
                     ventasDao.eliminarVenta(idEliminar);
+                    break;
+                case 5:
+                    List <Venta> ventasRanking = ventasDao.consultarVentasEmpleados();
+                    if(ventasRanking.isEmpty()){
+                    System.out.println("No hay ventas registradas");
+                    return;
+                }
+                    System.out.println("Este es el ranking de ventas por empleado");
+                    for(Venta v : ventasRanking){
+                        System.out.println("Empleado: " + v.getNombreEmpleado() + " Ha vendido: " + v.getTotal());
+                    }
                     break;
                 default:
                     System.out.println("Opción no válida, por favor intenta de nuevo.");

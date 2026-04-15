@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ProveedorDAO {
 
-    public void instertarProveedor(Proveedor proveedor){
+    public void insertarProveedor(Proveedor proveedor){
         String sql = "INSERT INTO proveedores(nombre_proveedor, contacto, suministra) VALUES(?,?,?)";
 
         try {

@@ -34,16 +34,16 @@ public class ProveedoresService {
                     String contacto = sc.nextLine();
                     System.out.println("Que producto suministra");
                     String suministra = sc.nextLine();
-                    proveedorDAO.instertarProveedor(new Proveedor(nombre, contacto, suministra));
+                    proveedorDAO.insertarProveedor(new Proveedor(nombre, contacto, suministra));
                     break;
                 case 3:
-                    List <Proveedor> provedorActualizar = proveedorDAO.consultarProveedores();
-                    if(provedorActualizar.isEmpty()){
+                    List <Proveedor> proveedorActualizar = proveedorDAO.consultarProveedores();
+                    if(proveedorActualizar.isEmpty()){
                         System.out.println("No hay ningun proveedor disponible");
                         return;
                     }
                     System.out.println("Este es el listado de proveedores escoja un ID");
-                    provedorActualizar.forEach(System.out::println);
+                    proveedorActualizar.forEach(System.out::println);
                     int id = sc.nextInt();
                     sc.nextLine();
                     System.out.println("Ingresa nombre");
